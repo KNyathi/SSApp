@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",              // Specify ECMAScript target version
+      "module": "NodeNext",            // Use NodeNext for ES module support
+      "moduleResolution": "NodeNext",  // Ensure module resolution aligns with NodeNext
+      "esModuleInterop": true,         // Enables interop between CommonJS and ES modules
+      "skipLibCheck": true,            // Skips type checking of declaration files for performance
+      "forceConsistentCasingInFileNames": true, // Enforces consistent file casing
+      "strict": true                   // Enable all strict type-checking options
+    },
+    "include": [
+      "server.ts",                     // Ensure your server file is included in the compilation
+      "server/**/*.ts"                    // Include any other TypeScript files in your project
+    ],
+    "exclude": [
+      "node_modules"                   // Exclude dependencies from the compilation
+    ]
+  }
+  
