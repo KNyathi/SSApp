@@ -5,6 +5,5 @@ A project for a Learning Management System
 
 ``
 npm run dev
-
 ``
  ### it should open in port 3000
