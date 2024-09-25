@@ -1,7 +1,7 @@
 # SSApp
 A project for a Learning Management System
 
-## To start frontend, type:
+- ## To start frontend, type:
 
 ```
 npm run dev
