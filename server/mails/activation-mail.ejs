@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ScriptStorm Activation Email</title>
+    <meta http-equiv="Content-Type" content="text/html; charset= UTF-8" />
+    <meta name="viewport" content="width=device-width, intial-scale=1.0" />
+    <style type="text/css">
+        /* Base */
+        body {
+            margin: 0;
+            padding: 0;
+            min-width: 100%;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #FAFAFA;
+            color: #222222;
+        }
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        table id {
+            vertical-align: top;
+        }
+
+        /* Layout*/
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .email-header {
+            background-color: #0078f3;
+            padding: 24px;
+            color: #ffffff;
+        }
+        .email-body {
+            padding: 24px;
+            background-color: #ffffff;
+        }
+        .email-footer {
+            background-color: #f6f6f6;
+            padding: 24px;
+        }
+        /*Buttons*/
+        .button {
+            display: inline-block;
+            background-color: #0078f3;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+        }
+
+    </style> 
+</head>
+<body> 
+    <div class="email-wrapper">
+        <div class="email-header">
+            <h1>Welcome to ScriptStorm</h1>
+        </div>
+
+        <div class="email-body">
+            <p>Hello <%= user.name %>,</p>            
+            <p>We are glad you decided to change your life for the better. That's what Bennett did too. Oh, we forget you have no idea who he is &#128522;.</p>
+            <p>To activate your account, use the activation code below:</p> 
+            <h2> <%= activationCode %></h2> 
+            <p>The code expires in 5 minutes (counting 1,2..)</p> 
+            <p>If you did not register for a ScriptStorm account, please ignore this email (even though we would love you to register, and ofcourse, not ignore)</p> 
+        </div>
+
+        <div class="email-footer">
+            <p>If you have any questions, get in touch with us at <a href="mailto:hello@scriptstorm.com">hello@scriptstorm.com </a> </p> 
+        </div>
+    </div>
+    
+</body>
+</html>
