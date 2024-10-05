@@ -1,8 +1,7 @@
 require("dotenv").config();
 import { Response } from "express";
-import { IUser } from "../models/user_model";
+import { IUser } from "../models/user.model";
 import { redis } from "./redis";
-
 
 interface ITokenOptions {
   expires: Date;
@@ -11,13 +10,6 @@ interface ITokenOptions {
   sameSite: "lax" | "strict" | "none" | undefined;
   secure?: boolean;
 }
-
-export const sendToken = (user: IUser, statusCode: number, res: Response) => {
-  const accessToken = user.SignAccessToken();
-  const refreshToken = user.SignRefreshToken();
-
-  //upload session - when a user logs in, we upload to redis for cache maintenance
-    redis.set(user._id.toString(), JSON.stringify(user) as any);
 
 
   //parse environment variables to integration with fallback values
@@ -31,19 +23,27 @@ export const sendToken = (user: IUser, statusCode: number, res: Response) => {
   );
 
   //options for cookies
-  const accessTokenOptions: ITokenOptions = {
-    expires: new Date(Date.now() + accessTokenExpire + 1000),
-    maxAge: accessTokenExpire + 1000,
+  export const accessTokenOptions: ITokenOptions = {
+    expires: new Date(Date.now() + accessTokenExpire * 60 * 1000), //convert to milliseconds (accesstoken is 5minutes)
+    maxAge: accessTokenExpire * 60 * 1000, //convert age from minutes to milliseconds
     httpOnly: true,
     sameSite: "lax",
   };
 
-  const refreshTokenOptions: ITokenOptions = {
-    expires: new Date(Date.now() + refreshTokenExpire + 1000),
-    maxAge: refreshTokenExpire + 1000,
+  export const refreshTokenOptions: ITokenOptions = {
+    expires: new Date(Date.now() + refreshTokenExpire * 24 * 60 * 60 * 1000), //refreshtoken expires in 3 days
+    maxAge: refreshTokenExpire * 24 * 60 * 60 * 1000, //convert age from days to milliseconds
     httpOnly: true,
     sameSite: "lax",
   };
+
+
+export const sendToken = (user: IUser, statusCode: number, res: Response) => {
+  const accessToken = user.SignAccessToken();
+  const refreshToken = user.SignRefreshToken();
+
+  //upload session - when a user logs in, we upload to redis for cache maintenance
+  redis.set(user._id.toString(), JSON.stringify(user) as any);
 
   //only set secure to true in production
   if (process.env.NODE_ENV === "production") {
