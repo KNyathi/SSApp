@@ -7,6 +7,9 @@ import {
   updateAccessToken,
   getUserInfo,
   socialAuth,
+  updateUserInfo,
+  updatePassword,
+  updateProfilePicture,
 } from "../controllers/user_controller";
 import { isAuthenticated } from "../middleware/auth";
 
@@ -19,5 +22,8 @@ userRouter.get("/logout", isAuthenticated, logoutUser);
 userRouter.get("/refresh", updateAccessToken); //WORK OUT WHAT HAPPENS AND INVALIDATE PREVIOUS ACCESS TOKENS UPON REFRESH
 userRouter.get("/me", isAuthenticated, getUserInfo);
 userRouter.post("/social-auth", socialAuth);
+userRouter.put("/update-user-info", isAuthenticated, updateUserInfo);
+userRouter.put("/update-user-password", isAuthenticated, updatePassword);
+userRouter.put("/update-profile-picture", isAuthenticated, updateProfilePicture); //images in base 64 (cloudinary)
 
 export default userRouter;
