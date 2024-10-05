@@ -6,4 +6,4 @@ A project for a Learning Management System
 ```
 npm run dev
 ```
- ### it should open in port 3000
+-  ### it should open in port 8000
