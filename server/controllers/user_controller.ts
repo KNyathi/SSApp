@@ -269,7 +269,7 @@ interface ISocialAuthBody {
   avatar: string;
 }
 
-//social authentification
+//social authentication
 export const socialAuth = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {

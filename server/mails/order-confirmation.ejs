@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your ScriptStorm Order is confirmed!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        /* Base */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+        a {
+            color: #0078f3;
+            text-decoration: none;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-top: 0;
+        }
+        h1 {
+            font-size: 28px;
+            color: #0078f3;
+        }
+        h2 {
+            font-size: 20px;
+            color: #333333;
+        }
+        p {
+            margin: 0 0 16px;
+        }
+
+        /* Layout */
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background-color: #0078f3;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+        }
+        .email-body {
+            padding: 24px;
+        }
+        .email-footer {
+            background-color: #f4f4f4;
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .email-footer a {
+            color: #0078f3;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            margin-bottom: 24px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eeeeee;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        /* Button */
+        .button {
+            display: inline-block;
+            background-color: #0078f3;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="email-header">
+            <h1>Order Confirmation</h1>
+            <p>Thank you for your purchase from ScriptStorm!</p>
+        </div>
+
+        <!-- Body -->
+        <div class="email-body">
+            <h2>Order Summary</h2>
+
+            <!-- Order Details Table -->
+            <table>
+                <tr>
+                    <th>Order ID:</th>
+                    <td><%= order._id %></td>
+                </tr>
+                <tr>
+                    <th>Order Date:</th>
+                    <td><%= order.date %></td>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td><%= order.name %></td>
+                </tr>
+                <tr>
+                    <th>Total Price:</th>
+                    <td>$<%= order.price %></td>
+                </tr>
+            </table>
+
+            <p>We're excited that you chose ScriptStorm! Your order has been confirmed and is now being processed.</p>
+
+            <p>Feel free to check out your order history or manage your account by logging in to our platform.</p>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <p>If you have any questions, feel free to reach out to us at <a href="mailto:hello@scriptstorm.com">hello@scriptstorm.com</a>.</p>
+            <p>Thank you for choosing ScriptStorm!</p>
+        </div>
+    </div>
+</body>
+</html>
