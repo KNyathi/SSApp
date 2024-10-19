@@ -6,7 +6,10 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+<<<<<<< HEAD
   darkMode: ["class"],
+=======
+>>>>>>> 64e5aadd3615b8820740673a69e504c5a51c7a24
   theme: {
     extend: {
       fontFamily:{
