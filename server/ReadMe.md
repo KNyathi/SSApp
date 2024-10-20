@@ -1,100 +1,107 @@
 # Backend
-1) Create a directory called Backend and open it
+1) Inside a directory called SSApp, create a directory called server
 ```shell
-mkdir backend
-cd backend
+mkdir server
+cd server
+```
+2) Inside the directory, initialize node
+   ```shell
+   npm init
+   ```
+   Set entry point to "server.js" in the options that appear upon running the command.
+
+3) Install dependencies
+   ```shell
+   npm i bcryptjs cloudinary cookie-parser cors dotenv ejs express ioredis jsonwebtoken mongoose node-cron nodemailer ts-node-dev typescript
+   ```
+   Also install the corresponding types for typescript
+   ```shell
+    npm i @types/ejs @types/nodemailer @types/bcryptjs @types/cookie-parser @types/cors @types/express @types/jsonwebtoken @types/node @types/node-cron
+   ```
+
+3) Make connections for your backend database and add the link to your .env file. Make similar adjustments for cloudinary, redis, and gmail as a host for sending emails
+   
+   ```shell
+PORT = 8000
+ORIGIN =['http://localhost:3000/']
+DB_URL = 'mongodb://localhost:27017/lms'
+NODE_ENV = development
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+REDIS_URL = 
+ACTIVATION_SECRET = 
+
+   ```
+
+- Make your host connection set to gmail personal account for "development" (to be changed when in "production")
+```shell
+SMTP_HOST = smtp.gmail.com
+SMTP_PORT = 465
+SMTP_SERVICE = gmail
+SMTP_MAIL = 
+SMTP_PASSWORD = 
 ```
 
-2)  If you already have django installed, copy the code below and proceed with further instructions
+- Generate access token values using a random character generator with Capital and Small letters, Numbers, and Symbols characteristics which is between 20 and 40 characters long. Upon generation, paste the generated random characters in the access and refresh token values:
+
 ```shell
-django-admin startproject backend
-py manage.py startapp myapp
+ACCESS_TOKEN = '' 
+REFRESH_TOKEN = ''
+ACCESS_TOKEN_EXPIRE = 5
+REFRESH_TOKEN_EXPIRE = 3
 ```
 
-3)  Go to settings and configure database settings based on the database you are using
+
+4) Define the following models for your backend
+- CourseModel
+- LayoutModel
+- notificationModel
+- orderModel
+- userModel
+
+5) Start the development server (port 8000)
+   ```shell
+    npm run dev
+   ```
+6) Create API endpoints  for making requests:
+   ### AUTH
+   - register user (POST) - "http://localhost:8000/api/v1/registration"
+   ```shell
+   {
+    "name": "",
+    "email": "",
+    "password": ""
+}
+   ```
+- activate user (POST) - "http://localhost:8000/api/v1/activate-user"
 ```shell
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '.....',
-        'USER': '.....',
-        'PASSWORD': '....',
-        'HOST': '...',
-        'PORT': '5432',
-    }
+{
+    "activation_code": "",
+    "activation_token": ""
 }
 ```
 
-4) Define models in myapp, create and run migrations (Open the directory for your project)
-```shell
-py manage.py makemigrations
-py manage.py migrate
-```
-
-5) Setup API endpoints using Django REST Framework
-```shell
-pip install djangorestframework
-```
-add rest_framework to settings.py inside your project directory
-
-6) Install django-filter
-```shell
-pip install django-filter
-```
-
-Install django-cors headers
-
-```shell
-pip install django-cors-headers
-```
-settings.py
-
-```shell
-CORS_ORIGIN_ALLOW_ALL = True
-
-INSTALLED_APPS = [
-     ...,
-    'corsheaders',
-]
-
-MIDDLEWARE = [
-    .....,
-    'corsheaders.middleware.CorsMiddleware',
-]
-
-REST_FRAMEWORK = {
-    ..., 
-    'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.AllowAny',
-    ],
+- login user (POST) - "http://localhost:8000/api/v1/login"
+  ```shell
+{
+    "email": "",
+    "password": ""
 }
+  ```
 
-
-Install python-decouple to store sensitive info in .env file
-
+- logout user (GET) - "http://localhost:8000/api/v1/logout"
+- refresh token (GET) - "http://localhost:8000/api/v1/refresh"
+- social auth (POST) - "http://localhost:8000/api/v1/socialAuth"
 ```shell
+{
 
-pip install python-decouple
+}
 ```
 
-7) Create Dockerfile for Backend
-```shell
-touch Dockerfile.backend
-```
 
-## All further implementations are made from within docker.
-```shell
-docker-compose exec backend bash
-```
-8) Web Scraping library used is BeautifulSoup4 for parsing data from hh.ru
-```shell
-pip install requests beautifulsoup4
-```
-9) Execute the following command to scrape data and populate the database
-    ```shell
-    python manage.py extract_applicants
-    python manage.py extract_vacancies
-    ```
+
+   
 # Unit Tests for backend API endpoints
 ![Screenshot (248)](https://github.com/KNyathi/DataParser/assets/124944851/1116bb16-2ec5-4859-9ac1-d3ad4032782a)
 
