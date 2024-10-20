@@ -64,39 +64,42 @@
     npm run dev
    ```
 6) Create API endpoints  for making requests:
-   ### AUTH
+   #### AUTH ROUTES
    - register user (POST) - "http://localhost:8000/api/v1/registration"
-   ```shell
-   {
-    "name": "",
-    "email": "",
-    "password": ""
-   }
-   ```
-- activate user (POST) - "http://localhost:8000/api/v1/activate-user"
-   ```shell
-   {
-       "activation_code": "",
-       "activation_token": ""
-   }
-   ```
-
-- login user (POST) - "http://localhost:8000/api/v1/login"
-     ```shell
+      ```shell
       {
+       "name": "",
        "email": "",
        "password": ""
       }
-     ```
-
-- logout user (GET) - "http://localhost:8000/api/v1/logout"
-- refresh token (GET) - "http://localhost:8000/api/v1/refresh"
-- social auth (POST) - "http://localhost:8000/api/v1/socialAuth"
+      ```
+      
+   - activate user (POST) - "http://localhost:8000/api/v1/activate-user"
       ```shell
       {
-      
+          "activation_code": "",
+          "activation_token": ""
       }
       ```
+
+   - login user (POST) - "http://localhost:8000/api/v1/login"
+        ```shell
+         {
+          "email": "",
+          "password": ""
+         }
+        ```
+
+   - logout user (GET) - "http://localhost:8000/api/v1/logout"
+     
+   - refresh token (GET) - "http://localhost:8000/api/v1/refresh"
+     
+   - social auth (POST) - "http://localhost:8000/api/v1/socialAuth"
+         ```shell
+         {
+         
+         }
+         ```
 
 
 
