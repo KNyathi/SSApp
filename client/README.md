@@ -7,8 +7,12 @@
    
 2) Install dependencies:
     ```shell
-      npm i next-themes react-icons  
-    ``` 
+      npm i next-themes react-icons react-hot-toast react-redux @reduxjs/toolkit formik yup
+    ```
+    
+    ```shell
+       npm install @mui/material @emotion/react @emotion/styled
+    ```
 3) Run development server (port 3000):
    ```shell
       npm run dev
