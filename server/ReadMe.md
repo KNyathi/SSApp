@@ -138,12 +138,152 @@
 
    ```
 
+   - edit course (PUT) - "http://localhost:8000/api/v1/edit-course/:id"
+   ```shell
+      {
+         "name": ""
+      }
+   ```
+
+   - get course (GET) - "http://localhost:8000/api/v1/get-course/:id"
+  
+   - get all courses (GET) - "http://localhost:8000/api/v1/get-courses"
+  
+   - get course by user (GET) - "http://localhost:8000/api/v1/get-course-content/:id"
+  
+   - add question (PUT) - "http://localhost:8000/api/v1/add-question"
+     ```shell
+      {
+          "question":"",
+          "courseId": "",
+          "contentId": ""
+          
+      }
+     ```
+
+   - add answer (PUT) - "http://localhost:8000/api/v1/add-answer"
+   ```shell
+      {
+          "answer": "",
+          "courseId": "",
+          "contentId": "",
+          "questionId": ""
+          
+      }
+   ```
+
+   - add review (PUT) - "http://localhost:8000/api/v1/add-review/:id"
+   ```shell
+   {
+    "review": "",
+    "rating": 
+   }
+   ```
+
+   - add reply (PUT) - "http://localhost:8000/api/v1/add-reply"
+   ```shell
+      {
+          "comment": "",
+          "courseId": "",
+          "reviewId": ""
+      }
+   ```
+
+   - get all courses (admin-only) (GET) - "http://localhost:8000/api/v1/get-courses"
+  
+   - delete course (admin-only) (DELETE) - "http://localhost:8000/api/v1/delete-course/:id"
+  
+   #### ORDER ROUTES
+   - create order (POST) - "http://localhost:8000/api/v1/create-order"
+   ```shell
+      {
+          "courseId": ""
+      }
+   ```
+
+   - getall orders (admin-only) (GET) - "http://localhost:8000/api/v1/get-orders"
+  
+   #### NOTIFICATION ROUTES
+   - get notifications (GET) - "http://localhost:8000/api/v1/get-all-notifications"
+  
+   - update notification (PUT) - "http://localhost:8000/api/v1/update-notification/:id"
 
 
-   
-# Unit Tests for backend API endpoints
-![Screenshot (248)](https://github.com/KNyathi/DataParser/assets/124944851/1116bb16-2ec5-4859-9ac1-d3ad4032782a)
+   #### ANALYTICS ROUTES
+   - get user analytics (GET) - "http://localhost:8000/api/v1/get-users-analytics"
+  
+   - get course analytics (GET) - "http://localhost:8000/api/v1/get-courses-analytics"
+  
+   - get order analytics (GET) - "http://localhost:8000/api/v1/get-orders-analytics"
+  
+   #### LAYOUT ROUTES
+   - create layout (POST) - "http://localhost:8000/api/v1/create-layout"
+   ```shell
+      {
+          "type": "Categorie",
+          "categories": [
+              {"title": ""
+              }, 
+          ]
+      }
+   ```
 
-### the code for tests is found in myapp/tests.py
+   - edit layout (PUT) - "http://localhost:8000/api/v1/edit-layout"
+   ```shell
+      {
+          "type": "Categories",
+          "categories": [
+              {"title": ""
+              }, 
+          ]
+      }
+   ```
+
+   - get layout (GET) - "http://localhost:8000/api/v1/get-layout"
+   ```shell
+      {
+          "type": "Categories"
+      }
+   ```
+
+   #### USER ROUTES
+   - user info (GET) - "http://localhost:8000/api/v1/me"
+  
+   - update user info (PUT) - "http://localhost:8000/api/v1/update-user-info"
+   ```shell
+      {
+          "name": "David Ndlovu"
+      }
+   ```
+
+   - update user password (PUT) - "http://localhost:8000/api/v1/update-user-password"
+   ```shell
+      {
+
+          "oldPassword": "",
+          "newPassword": ""
+      }
+   ```
+
+   - update profile picture (PUT) - "http://localhost:8000/api/v1/update-profile-picture"
+   ```shell
+      {
+          "avatar": ""
+      }
+   ```
+
+   - get all users (admin-only) (GET) - "http://localhost:8000/api/v1/get-users"
+
+   - update user role (admin-only) (PUT) - "http://localhost:8000/api/v1/update-user"
+   ```shell
+      {
+          "id": "",
+          "role" : ""
+      }
+   ```
+
+   - delete user (admin-only) (DELETE) - "http://localhost:8000/api/v1/delete-user/:id"
+  
+
 
  
