@@ -95,10 +95,11 @@
    - refresh token (GET) - "http://localhost:8000/api/v1/refresh"
      
    - social auth (POST) - "http://localhost:8000/api/v1/socialAuth"
+     
          ```shell
-            {
-            
-            }
+         {
+         
+         }
          ```
      
    #### COURSE ROUTES
