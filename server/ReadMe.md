@@ -31,8 +31,7 @@ CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 REDIS_URL = 
 ACTIVATION_SECRET = 
-
-   ```
+    ```
 
 - Make your host connection set to gmail personal account for "development" (to be changed when in "production")
    ```shell
