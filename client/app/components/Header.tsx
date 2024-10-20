@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-require-imports */
 "use client";
 import React, { FC, useState } from "react";
 import Link from "next/link";
 import NavItems from "../utils/NavItems";
 import { ThemeSwitcher } from "../utils/ThemeSwitcher";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
+import { useTheme } from "next-themes";
+import Image from "next/image";
 
 type Props = {
   open: boolean;
@@ -14,6 +18,7 @@ type Props = {
 const Header: FC<Props> = ({ activeItem, setOpen }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
+  const {theme} = useTheme(); //Get the current theme
 
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
@@ -26,6 +31,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
   }
   //for a sticky header
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClose = (e: any) => {
     if (e.target.id === "screen") {
       {
@@ -44,7 +50,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
         }`}
       >
         <div className="w-[95%] 800px:w-[92%] m0auto py-2 h-full">
-          <div className="w-full h-[80px] flex items-center justify-between p-3">
+          <div className="w-full h-[60px] flex items-center justify-between p-3">
             <div>
               <Link
                 href={"/"}
@@ -52,7 +58,25 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
                   "text-[25px] font-Poppins font-[500] text-black dark:text-white"
                 }
               >
-                ScriptStorm
+                {/* Conditionally render the logo based on the theme */}
+      
+                {theme === "dark" ? (
+                  <Image
+                    src={require("../../public/scriptstormlogo4.png")} // Dark mode logo
+                    alt="ScriptStorm Logo"
+                    width={250}
+                    height={100}
+                     className="ml-4 h-auto"
+                  />
+                ) : (
+                  <Image
+                    src={require("../../public/scriptstormlogo1.png")} // Light mode logo
+                    alt="ScriptStorm Logo"
+                    width={250}
+                    height={100}
+                    className="ml-4 h-auto"
+                  />
+                )}
               </Link>
             </div>
             <div className="flex items-center">
@@ -95,7 +119,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
               <br />
               <br />
               <p className="text-[16px] px-2 pl-5 text-black dark:text-white">
-               Copyright © 2024 ScriptStorm - A subsidiary of The Outstanding Company Russia LLC 
+               Copyright © 2024 ScriptStorm - A subsidiary of &quot;The Outstanding Company Russia&quot; LLC 
               </p>
             </div>
           </div>

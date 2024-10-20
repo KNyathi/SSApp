@@ -30,6 +30,8 @@ type Props = {
 };
 
 const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
+  
+  
   return (
     <>
       <div className="hidden 800px:flex">
@@ -39,7 +41,7 @@ const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
               <span
                 className={`${
                   activeItem === index
-                    ? 'dark:text-[#c98500ff] text-crimson'
+                    ? 'dark:text-[#c98500ff] text-[#c98500ff]'
                     : 'dark:text-white text-black'
                 } text-[18px] px-6 font-Poppins font-[400]`}
               >
@@ -65,7 +67,7 @@ const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
                         <Link href="/" key={index} passHref>
                             <span className={`${
                                 activeItem === index
-                                ? 'dark:text-[#c98500ff] text-black'
+                                ? 'dark:text-[#c98500ff] text-[#c98500ff]'
                                 : 'dark:text-white text-black'
                             } block py-5 text-[18px] px-6 font-Poppins font-[400]`}>
                             {item.name}
