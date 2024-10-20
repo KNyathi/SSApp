@@ -53,11 +53,11 @@
 
 
 4) Define the following models for your backend
-- CourseModel
-- LayoutModel
-- notificationModel
-- orderModel
-- userModel
+   - CourseModel
+   - LayoutModel
+   - notificationModel
+   - orderModel
+   - userModel
 
 5) Start the development server (port 8000)
    ```shell
