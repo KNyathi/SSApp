@@ -1,8 +1,9 @@
-# SSApp - Learning Management System with interactive-learning features
+# SSApp 
 
-## The application was developed using NodeJS framework for Backend and NextJS Framework for Frontend. The Database used is MongoDB. 
+## Learning Management System with interactive-learning features
+### The application was developed using NodeJS framework for Backend and NextJS Framework for Frontend. The Database used is MongoDB. 
 
-## Key Points
+#### Key Points
 1) Clone the repository using the command below
    ```shell
    git clone ....
