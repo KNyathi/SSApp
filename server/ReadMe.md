@@ -96,10 +96,46 @@
      
    - social auth (POST) - "http://localhost:8000/api/v1/socialAuth"
          ```shell
-         {
-         
-         }
+            {
+            
+            }
          ```
+     
+   #### COURSE ROUTES
+   - create course (POST) - "http://localhost:8000/api/v1/create-course"
+   ```shell
+      {
+        "name": "",
+        "description": "",
+        "price": ,
+        "estimatedPrice": ,
+        "tags": "",
+        "level": "",
+        "demoUrl": "",
+        "benefits": [
+          { "title": "" },
+        ],
+        "prerequisites": [
+          { "title": "" },
+        ],
+        "courseData": [
+          {
+            "title": "",
+            "description": "",
+            "videoUrl": "",
+            "videoSection": "",
+            "videoLength": ,
+            "links": [
+              {
+                "title": "",
+                "url": ""
+              }
+            ]
+          }
+        ]
+      }
+
+   ```
 
 
 
