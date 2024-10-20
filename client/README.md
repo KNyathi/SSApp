@@ -9,3 +9,7 @@
     ```shell
       npm i next-themes react-icons  
     ``` 
+3) Run development server (port 3000):
+   ```shell
+      npm run dev
+   ```
