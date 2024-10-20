@@ -22,16 +22,16 @@ cd server
 3) Make connections for your backend database and add the link to your .env file. Make similar adjustments for cloudinary, redis, and gmail as a host for sending emails
    
    ```shell
-PORT = 8000
-ORIGIN =['http://localhost:3000/']
-DB_URL = 'mongodb://localhost:27017/lms'
-NODE_ENV = development
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-REDIS_URL = 
-ACTIVATION_SECRET = 
-    ```
+   PORT = 8000
+   ORIGIN =['http://localhost:3000/']
+   DB_URL = 'mongodb://localhost:27017/lms'
+   NODE_ENV = development
+   CLOUDINARY_CLOUD_NAME=
+   CLOUDINARY_API_KEY=
+   CLOUDINARY_API_SECRET=
+   REDIS_URL = 
+   ACTIVATION_SECRET = 
+       ```
 
 - Make your host connection set to gmail personal account for "development" (to be changed when in "production")
    ```shell
