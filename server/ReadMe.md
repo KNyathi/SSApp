@@ -12,11 +12,11 @@
 
 3) Install dependencies
    ```shell
-   npm i bcryptjs cloudinary cookie-parser cors dotenv ejs express ioredis jsonwebtoken mongoose node-cron nodemailer ts-      node-dev typescript
+   npm i bcryptjs cloudinary cookie-parser cors dotenv ejs express ioredis jsonwebtoken mongoose node-cron nodemailer ts-node-dev typescript
    ```
    Also install the corresponding types for typescript
    ```shell
-    npm i @types/ejs @types/nodemailer @types/bcryptjs @types/cookie-parser @types/cors @types/express @types/jsonwebtoken       @types/node @types/node-cron
+    npm i @types/ejs @types/nodemailer @types/bcryptjs @types/cookie-parser @types/cors @types/express @types/jsonwebtoken @types/node @types/node-cron
    ```
 
 3) Make connections for your backend database and add the link to your .env file. Make similar adjustments for cloudinary, redis, and gmail as a host for sending emails
