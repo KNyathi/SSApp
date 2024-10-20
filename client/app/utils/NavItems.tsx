@@ -3,10 +3,6 @@ import Link from 'next/link';
 
 export const navItemsData = [
   {
-    name: 'Home',
-    url: '/',
-  },
-  {
     name: 'Courses',
     url: '/courses',
   },

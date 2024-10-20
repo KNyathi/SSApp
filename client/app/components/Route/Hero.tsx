@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { FC } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useTheme } from "next-themes";
+import Login from "../Auth/Login"; 
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Props = {};
@@ -13,7 +14,7 @@ const Hero: FC<Props> = (props) => {
   const { theme } = useTheme(); //Get the current theme
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center">
+    <div className="relative w-full min-h-screen flex items-center justify-start">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         {theme === "dark" ? (
@@ -22,7 +23,7 @@ const Hero: FC<Props> = (props) => {
             alt="Background"
             layout="fill" // Use this to fill the container
             objectFit="fill" // Ensures the image covers the area properly
-            className="opacity-10" // Make it slightly transparent to make text readable
+            className="opacity-5" // Make it slightly transparent to make text readable
           />
         ) : (
           <Image
@@ -35,8 +36,12 @@ const Hero: FC<Props> = (props) => {
         )}
       </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center text-center p-6 1000px:w-[60%]">
+      {/* Hero Content 
+ 
+      relative z-10 w-full flex flex-col items-center justify-center text-center p-6 1000px:w-[60%]
+      */}
+      <div className="w-full flex items-center text-center justify-center 1000px:justify-start flex-col relative z-10 p-6 1000px:w-[60%]">
+
         <h2 className="dark:text-white text-black text-[30px] 1000px:text-[50px] font-[600] font-Josefin py-4 leading-[1.2]">
           JavaScript Mastery: Code, Create, and Conquer!
         </h2>
@@ -66,6 +71,9 @@ const Hero: FC<Props> = (props) => {
           </div>
         </div>
       </div>
+
+   
+
     </div>
   );
 };

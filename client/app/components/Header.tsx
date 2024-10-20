@@ -8,14 +8,19 @@ import { ThemeSwitcher } from "../utils/ThemeSwitcher";
 import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import CustomModal from "../utils/CustomModal";
+import Login from "../components/Auth/Login";
+import SignUp from "../components/Auth/SignUp";
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
   activeItem: number;
+  route: string;
+  setRoute:(route: string) => void;
 };
 
-const Header: FC<Props> = ({ activeItem, setOpen }) => {
+const Header: FC<Props> = ({ activeItem, setOpen, route, open, setRoute }) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
   const {theme} = useTheme(); //Get the current theme
@@ -40,13 +45,16 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
     }
   };
 
+  console.log("Current route:", route);
+  console.log("Is modal open?", open);
+
   return (
     <div className="w-full relative">
       <div
         className={`${
           active
             ? "dark:bg-opacity-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black fixed top-0 left-0 w-full h-[80px] z-[80] border-b dark:border-[#ffffff1c] shadow-xl transition duration-500"
-            : "w-full border-b dark:border-[#ffffff1c] h-[80px] z-[80] dark:shadow"
+            : "w-full fixed top-0 left-0 border-b dark:border-[#ffffff1c] h-[80px] z-[80] dark:shadow"
         }`}
       >
         <div className="w-[95%] 800px:w-[92%] m0auto py-2 h-full">
@@ -66,7 +74,7 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
                     alt="ScriptStorm Logo"
                     width={250}
                     height={100}
-                     className="ml-4 h-auto"
+                    className="ml-4 h-auto"
                   />
                 ) : (
                   <Image
@@ -125,6 +133,41 @@ const Header: FC<Props> = ({ activeItem, setOpen }) => {
           </div>
         )}
       </div>
+      {
+        route === "Login" && (
+          <>
+            {
+              open && (
+                <CustomModal
+                  open={open}
+                  setOpen={setOpen}
+                  setRoute={setRoute}
+                  activeItem={activeItem}
+                  component= {Login}
+                />
+              )
+            }
+          </>
+        )
+      }
+
+      {
+        route === "Sign-Up" && (
+          <>
+            {
+              open && (
+                <CustomModal
+                  open={open}
+                  setOpen={setOpen}
+                  setRoute={setRoute}
+                  activeItem={activeItem}
+                  component= {SignUp}
+                />
+              )
+            }
+          </>
+        )
+      }
     </div>
   );
 };
