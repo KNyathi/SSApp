@@ -7,7 +7,7 @@
    
 2) Install dependencies:
     ```shell
-      npm i next-themes react-icons  
+      npm i next-themes react-icons react-hot-toast react-redux @reduxjs/toolkit formik yup
     ```
     
     ```shell
