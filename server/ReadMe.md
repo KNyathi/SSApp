@@ -35,22 +35,22 @@ ACTIVATION_SECRET =
    ```
 
 - Make your host connection set to gmail personal account for "development" (to be changed when in "production")
-```shell
-SMTP_HOST = smtp.gmail.com
-SMTP_PORT = 465
-SMTP_SERVICE = gmail
-SMTP_MAIL = 
-SMTP_PASSWORD = 
-```
+   ```shell
+   SMTP_HOST = smtp.gmail.com
+   SMTP_PORT = 465
+   SMTP_SERVICE = gmail
+   SMTP_MAIL = 
+   SMTP_PASSWORD = 
+   ```
 
 - Generate access token values using a random character generator with Capital and Small letters, Numbers, and Symbols characteristics which is between 20 and 40 characters long. Upon generation, paste the generated random characters in the access and refresh token values:
 
-```shell
-ACCESS_TOKEN = '' 
-REFRESH_TOKEN = ''
-ACCESS_TOKEN_EXPIRE = 5
-REFRESH_TOKEN_EXPIRE = 3
-```
+   ```shell
+   ACCESS_TOKEN = '' 
+   REFRESH_TOKEN = ''
+   ACCESS_TOKEN_EXPIRE = 5
+   REFRESH_TOKEN_EXPIRE = 3
+   ```
 
 
 4) Define the following models for your backend
