@@ -8,7 +8,11 @@
 2) Install dependencies:
     ```shell
       npm i next-themes react-icons  
-    ``` 
+    ```
+    
+    ```shell
+       npm install @mui/material @emotion/react @emotion/styled
+    ```
 3) Run development server (port 3000):
    ```shell
       npm run dev
