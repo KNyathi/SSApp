@@ -1,9 +1,9 @@
 # Backend
 1) Inside a directory called SSApp, create a directory called server
-```shell
-mkdir server
-cd server
-```
+   ```shell
+   mkdir server
+   cd server
+   ```
 2) Inside the directory, initialize node
    ```shell
    npm init
@@ -12,11 +12,11 @@ cd server
 
 3) Install dependencies
    ```shell
-   npm i bcryptjs cloudinary cookie-parser cors dotenv ejs express ioredis jsonwebtoken mongoose node-cron nodemailer ts-node-dev typescript
+   npm i bcryptjs cloudinary cookie-parser cors dotenv ejs express ioredis jsonwebtoken mongoose node-cron nodemailer ts-      node-dev typescript
    ```
    Also install the corresponding types for typescript
    ```shell
-    npm i @types/ejs @types/nodemailer @types/bcryptjs @types/cookie-parser @types/cors @types/express @types/jsonwebtoken @types/node @types/node-cron
+    npm i @types/ejs @types/nodemailer @types/bcryptjs @types/cookie-parser @types/cors @types/express @types/jsonwebtoken       @types/node @types/node-cron
    ```
 
 3) Make connections for your backend database and add the link to your .env file. Make similar adjustments for cloudinary, redis, and gmail as a host for sending emails
@@ -71,32 +71,32 @@ cd server
     "name": "",
     "email": "",
     "password": ""
-}
+   }
    ```
 - activate user (POST) - "http://localhost:8000/api/v1/activate-user"
-```shell
-{
-    "activation_code": "",
-    "activation_token": ""
-}
-```
+   ```shell
+   {
+       "activation_code": "",
+       "activation_token": ""
+   }
+   ```
 
 - login user (POST) - "http://localhost:8000/api/v1/login"
-  ```shell
-{
-    "email": "",
-    "password": ""
-}
-  ```
+     ```shell
+      {
+       "email": "",
+       "password": ""
+      }
+     ```
 
 - logout user (GET) - "http://localhost:8000/api/v1/logout"
 - refresh token (GET) - "http://localhost:8000/api/v1/refresh"
 - social auth (POST) - "http://localhost:8000/api/v1/socialAuth"
-```shell
-{
-
-}
-```
+      ```shell
+      {
+      
+      }
+      ```
 
 
 
