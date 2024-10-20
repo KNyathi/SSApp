@@ -252,7 +252,7 @@
    - update user info (PUT) - "http://localhost:8000/api/v1/update-user-info"
    ```shell
       {
-          "name": "David Ndlovu"
+          "name": ""
       }
    ```
 
