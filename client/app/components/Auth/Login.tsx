@@ -19,7 +19,7 @@ const schema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email!")
     .required("Please enter your email"),
-  password: Yup.string().required("Please enter your password").min(6),
+  password: Yup.string().required("Please enter your password"),
 });
 
 const Login: FC<Props> = ({ setRoute }) => {
@@ -38,30 +38,36 @@ const Login: FC<Props> = ({ setRoute }) => {
     <div className="w-full ">
       <h1 className={`${styles.title}`}>Login to Your Account</h1>
 
-        <div className="flex items-center justify-center my-3">
-            {/* Google Icon Box */}
-          
-            <div className="flex items-center cursor-pointer mr-2">
-                <label className="flex items-center border border-gray-100 dark:border-black rounded-lg bg-black dark:bg-white shadow-lg px-2 py-1 hover:bg-gray-200 transition duration-200">
-                <FcGoogle size={30} className="mr-1" />
-                <span className="font-Poppins text-[14px] text-white dark:text-black">Google</span>
-                </label>
-            </div>
-            
-            {/* GitHub Icon Box */}
-            <div className="flex items-center cursor-pointer">
-                <label className="flex items-center border border-gray-100 dark:border-black rounded-lg bg-black dark:bg-white shadow-lg px-2 py-1 hover:bg-gray-200 transition duration-200">
-                <AiFillGithub size={30} className="mr-1 text-white dark:text-black" />
-                <span className="font-Poppins text-[14px] text-white dark:text-black">GitHub</span>
-                </label>
-            </div>
-          
+      <div className="flex items-center justify-center my-3">
+        {/* Google Icon Box */}
+
+        <div className="flex items-center cursor-pointer mr-2">
+          <label className="flex items-center border border-gray-100 dark:border-black rounded-lg bg-black dark:bg-white shadow-lg px-2 py-1 hover:bg-gray-200 transition duration-200">
+            <FcGoogle size={30} className="mr-1" />
+            <span className="font-Poppins text-[14px] text-white dark:text-black">
+              Google
+            </span>
+          </label>
         </div>
 
-        <h5 className="text-center pt-4 font-Poppins text-[14px] text-white dark:text-black">
-          Or 
-        </h5>
-        <br/>
+        {/* GitHub Icon Box */}
+        <div className="flex items-center cursor-pointer">
+          <label className="flex items-center border border-gray-100 dark:border-black rounded-lg bg-black dark:bg-white shadow-lg px-2 py-1 hover:bg-gray-200 transition duration-200">
+            <AiFillGithub
+              size={30}
+              className="mr-1 text-white dark:text-black"
+            />
+            <span className="font-Poppins text-[14px] text-white dark:text-black">
+              GitHub
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <h5 className="text-center pt-4 font-Poppins text-[14px] text-white dark:text-black">
+        Or
+      </h5>
+      <br />
 
       <form onSubmit={handleSubmit}>
         <label className={`${styles.label}`} htmlFor="email">
@@ -127,9 +133,8 @@ const Login: FC<Props> = ({ setRoute }) => {
         </div>
         <br />
 
-
         <h5 className="text-center text-white dark:text-black pt-4 font-Poppins text-[14px]">
-          Don&apos;t have an account? {""}
+          Don&apos;t have an account? {" "}
           <span
             className="text-[#c98500ff] pl-1 cursor-pointer"
             onClick={() => setRoute("Sign-Up")}
@@ -139,7 +144,7 @@ const Login: FC<Props> = ({ setRoute }) => {
         </h5>
       </form>
 
-      <br/>
+      <br />
     </div>
   );
 };

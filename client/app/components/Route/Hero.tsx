@@ -72,7 +72,26 @@ const Hero: FC<Props> = (props) => {
         </div>
       </div>
 
-   
+        
+      <div className="w-[0%] flex items-center justify-end p-6 1000px:w-[40%]">
+        {theme === "dark" ? (
+          <Image
+            src={require("../../../public/assets/learn nodejs.png")}
+            alt="Background"
+            layout="responsive" // Use this to fill the container
+            objectFit="scale-down" // Ensures the image covers the area properly
+            className="opacity-90" // Make it slightly transparent to make text readable
+          />
+        ) : (
+          <Image
+            src={require("../../../public/assets/learn nextjs2.png")}
+            alt="Background"
+            layout="responsive" // Use this to fill the container
+            objectFit="scale-down" // Ensures the image covers the area properly
+            className="opacity-90" // Make it slightly transparent to make text readable
+          />
+        )}
+      </div>
 
     </div>
   );

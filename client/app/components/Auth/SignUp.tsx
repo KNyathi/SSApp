@@ -16,45 +16,106 @@ type Props = {
 };
 
 const schema = Yup.object().shape({
+  name: Yup.string().required("Please enter your name"),
+
   email: Yup.string()
     .email("Invalid email!")
     .required("Please enter your email"),
-  password: Yup.string().required("Please enter your password").min(6),
+
+  password: Yup.string()
+    .required("Please enter your password")
+    .min(6, "Password must be at least 6 characters long")
+    .matches(/[0-9]/, "Password must contain at least one digit")
+    .matches(
+      /[!@#$%^&*(),.?":{}|<>]/,
+      "Password must contain at least one special character"
+    )
+    .matches(/[A-Z]/, "Password must have at least one uppercase letter")
+    .test(
+      "not-similar",
+      "Password must not be similar to your name",
+      function (value) {
+        const { name } = this.parent; // Access the name field from the parent object
+        if (!name || !value) return true;
+
+        const cleanedName = name.replace(/\s+/g, "").toLowerCase();
+        const cleanedPassword = value.toLowerCase();
+
+        for (let i = 0; i <= cleanedName.length - 4; i++) {
+          const substring = cleanedName.slice(i, i + 4);
+          if (cleanedPassword.includes(substring)) {
+            return false; // The password contains a 4+ character sequence from the name
+          }
+        }
+
+        return true; // No invalid sequence found
+      }
+    ),
+
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
+    .required("Please confirm your password"),
 });
 
 const SignUp: FC<Props> = ({ setRoute }) => {
   const [show, setShow] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const formik = useFormik({
-    initialValues: { email: "", password: "" },
+    initialValues: { name: "", email: "", password: "", confirmPassword: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password }) => {
       console.log(email, password);
+      setRoute("Verification")
     },
   });
 
   const { errors, touched, values, handleChange, handleSubmit } = formik;
 
   return (
-    <div className="w-full">
-      <h1 className={`${styles.title}`}>Login to Script</h1>
+    <div className="w-full ">
+      <h1 className={`${styles.title}`}>Create Your Free Account</h1>
+
       <form onSubmit={handleSubmit}>
-        <label className={`${styles.label}`} htmlFor="email">
-          What&apos;s your email address?
-        </label>
-        <input
-          type="email"
-          name=""
-          value={values.email}
-          onChange={handleChange}
-          id="email"
-          placeholder="jscoder@gmail.com"
-          className={`${errors.email && touched.email && "border-red-500"} ${
-            styles.input
-          }`}
-        />
-        {errors.email && touched.email && (
-          <span className="text-red-500 pt-2 block">{errors.email}</span>
-        )}
+        <div className="mb-3">
+          <label className={`${styles.label}`} htmlFor="email">
+            What&apos;s your name?
+          </label>
+          <input
+            type="text"
+            name=""
+            value={values.name}
+            onChange={handleChange}
+            id="name"
+            placeholder="Bennett JSCoder"
+            className={`${errors.name && touched.name && "border-red-500"} ${
+              styles.input
+            }`}
+          />
+          {errors.name && touched.name && (
+            <span className="text-red-500 pt-2 block">{errors.name}</span>
+          )}
+        </div>
+
+        <div className="mb-1">
+          <label className={`${styles.label}`} htmlFor="email">
+            What&apos;s your email address?
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            id="email"
+            placeholder="jscoder@gmail.com"
+            className={`${errors.email && touched.email && "border-red-500"} ${
+              styles.input
+            }`}
+          />
+          {errors.email && touched.email && (
+            <span className="text-red-500 pt-2 block">{errors.email}</span>
+          )}
+        </div>
 
         <div className="w-full mt-5 relative mb-1">
           <label className={`${styles.label}`} htmlFor="email">
@@ -76,52 +137,86 @@ const SignUp: FC<Props> = ({ setRoute }) => {
           {/*  for hiding or revealing the password upon entry*/}
           {!show ? (
             <AiOutlineEyeInvisible
-              className="absolute bottom-3 right-2 z-1 cursor-pointer"
+              className="absolute text-white dark:text-black bottom-3 right-2 z-1 cursor-pointer"
               size={20}
               onClick={() => setShow(true)}
             />
           ) : (
             <AiOutlineEye
-              className="absolute bottom-3 right-2 z-1 cursor-pointer"
+              className="absolute text-white dark:text-black bottom-3 right-2 z-1 cursor-pointer"
               size={20}
               onClick={() => setShow(false)}
             />
           )}
-          {errors.password && touched.password && (
-            <span className="text-red-500 pt-2 block">{errors.password}</span>
+        </div>
+
+        {errors.password && touched.password && (
+          <span className="text-red-500 pt-2 block">{errors.password}</span>
+        )}
+
+        {/* Confirm Password Field */}
+        <div className="w-full mt-5 relative mb-1">
+          <label className={`${styles.label}`} htmlFor="confirmPassword">
+            Confirm your password
+          </label>
+
+          <input
+            type={!showConfirmPassword ? "password" : "text"}
+            name="confirmPassword"
+            value={values.confirmPassword}
+            onChange={handleChange}
+            id="confirmPassword"
+            placeholder="Confirm password"
+            className={`${
+              errors.confirmPassword &&
+              touched.confirmPassword &&
+              "border-red-500"
+            } ${styles.input}`}
+          />
+
+          {/* For hiding or revealing the confirm password */}
+          {!showConfirmPassword ? (
+            <AiOutlineEyeInvisible
+              className="absolute text-white dark:text-black bottom-3 right-2 z-1 cursor-pointer"
+              size={20}
+              onClick={() => setShowConfirmPassword(true)}
+            />
+          ) : (
+            <AiOutlineEye
+              className="absolute text-white dark:text-black bottom-3 right-2 z-1 cursor-pointer"
+              size={20}
+              onClick={() => setShowConfirmPassword(false)}
+            />
           )}
         </div>
+
+        {errors.confirmPassword && touched.confirmPassword && (
+          <span className="text-red-500 pt-2 block">
+            {errors.confirmPassword}
+          </span>
+        )}
 
         <div className="w-full mt-5">
           <input
             type="submit"
-            value="Start Learning for Free"
+            value="Create Account"
             className={`${styles.button}`}
           />
         </div>
         <br />
 
-        <h5 className="text-center pt-4 font-Poppins text-[14px] text-black dark:text-white">
-          Or join with
-        </h5>
-
-        <div className="flex items-center justify-center my-3">
-          <FcGoogle size={30} className="cursor-pointer mr-2" />
-          <AiFillGithub size={30} className="cursor-pointer ml-2" />
-        </div>
-
-        <h5 className="text-center pt-4 font-Poppins text-[14px]">
-          Don&apos;t have an account? No worries..{""}
+        <h5 className="text-center text-white dark:text-black pt-4 font-Poppins text-[14px]">
+          Already have an account? {""}
           <span
-            className="text-[#2190ff] pl-1 cursor-pointer"
-            onClick={() => setRoute("Sign-Up")}
+            className="text-[#c98500ff] pl-1 cursor-pointer"
+            onClick={() => setRoute("Login")}
           >
-            Create Your Free Account
+            Login
           </span>
         </h5>
       </form>
 
-      <br/>
+      <br />
     </div>
   );
 };
