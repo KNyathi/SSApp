@@ -20,7 +20,8 @@ app.use(cookieParser());
 // cors => cros origin resource sharing
 app.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: ['http://localhost:3000'],//process.env.ORIGIN, #TO FIX THIS ISSUE
+    credentials: true,
   })
 );
 
